@@ -1,12 +1,13 @@
-import React, { useEffect, useRef } from "react"
+"use client"
+import { useEffect, useRef } from "react"
 
-export const useTradingViewWidget = (scriptUrl: string, config: Record<string, unknown>, height = 600) => {
+const useTradingViewWidget = (scriptUrl: string, config: Record<string, unknown>, height = 600) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     if (!containerRef.current) return
     if (containerRef.current.dataset.loaded) return
-    containerRef.current.innerHTML = `<div class="tradingview-widget-container" style="height: ${height}px; width: 100%;"></div>`
+    containerRef.current.innerHTML = `<div class="tradingview-widget-container__widget" style="height: ${height}px; width: 100%;"></div>`
 
     const script = document.createElement("script")
     script.src = scriptUrl
@@ -26,3 +27,4 @@ export const useTradingViewWidget = (scriptUrl: string, config: Record<string, u
 
   return containerRef
 }
+export default useTradingViewWidget
