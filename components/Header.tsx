@@ -7,14 +7,15 @@ const Header = async () => {
   return (
     <header className="sticky top-0 header">
       <div className="container header-wrapper">
-        <Link href="/">
+        <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/assets/icons/logo.svg"
-            alt="Signalist logo"
-            width={140}
-            height={32}
+            src="/assets/images/logo.png"
+            alt="SnapTrade logo"
+            width={45}
+            height={45}
             className="h-8 w-auto cursor-pointer"
           />
+          <span className="text-2xl text-white font-bold">SnapTrade</span>
         </Link>
         <nav className="hidden sm:block">
           <NavItems />
