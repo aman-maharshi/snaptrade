@@ -15,7 +15,7 @@ const Header = async () => {
             height={45}
             className="h-8 w-auto cursor-pointer"
           />
-          <span className="text-2xl text-white font-bold">SnapTrade</span>
+          <span className="text-2xl text-white font-medium">SnapTrade</span>
         </Link>
         <nav className="hidden sm:block">
           <NavItems />
