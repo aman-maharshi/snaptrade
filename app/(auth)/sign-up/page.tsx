@@ -1,10 +1,9 @@
 "use client"
 
-import React from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
 import InputField from "@/components/forms/InputField"
+import SelectField from "@/components/forms/SelectField"
+import { INVESTMENT_GOALS, RISK_TOLERANCE_OPTIONS, PREFERRED_INDUSTRIES } from "@/lib/constants"
 
 const SignUpPage = () => {
   const {
@@ -79,6 +78,36 @@ const SignUpPage = () => {
               message: "Password must be at least 8 characters"
             }
           }}
+        />
+
+        <SelectField
+          name="investmentGoals"
+          label="Investment Goals"
+          placeholder="Select your investment goal"
+          options={INVESTMENT_GOALS}
+          control={control}
+          error={errors.investmentGoals}
+          required
+        />
+
+        <SelectField
+          name="riskTolerance"
+          label="Risk Tolerance"
+          placeholder="Select your risk level"
+          options={RISK_TOLERANCE_OPTIONS}
+          control={control}
+          error={errors.riskTolerance}
+          required
+        />
+
+        <SelectField
+          name="preferredIndustry"
+          label="Preferred Industry"
+          placeholder="Select your preferred industry"
+          options={PREFERRED_INDUSTRIES}
+          control={control}
+          error={errors.preferredIndustry}
+          required
         />
 
         <button type="submit" className="yellow-btn w-full mt-5" disabled={isSubmitting}>
