@@ -17,20 +17,16 @@ const SignUpPage = () => {
     defaultValues: {
       fullName: "",
       email: "",
-      password: "",
-      country: "",
-      investmentGoals: "",
-      riskTolerance: "",
-      preferredIndustry: ""
+      password: ""
     },
     mode: "onBlur"
   })
 
   const onSubmit = async (data: SignUpFormData) => {
     try {
-      console.log(data)
+      console.log("Form submitted with data:", data)
     } catch (error) {
-      console.error(error)
+      console.error("Form submission error:", error)
     }
   }
 
@@ -42,22 +38,30 @@ const SignUpPage = () => {
         <InputField
           name="fullName"
           label="Full Name"
-          placeholder="John Doe"
+          placeholder="Enter your full name"
           register={register}
           error={errors.fullName}
-          validation={{ required: "Full name is required", minLength: 2 }}
+          validation={{
+            required: "Full name is required",
+            minLength: {
+              value: 2,
+              message: "Full name must be at least 2 characters"
+            }
+          }}
         />
 
         <InputField
           name="email"
           label="Email"
-          placeholder="contact@email.com"
+          placeholder="Enter your email"
           register={register}
           error={errors.email}
           validation={{
-            required: "Email name is required",
-            pattern: /^\w+@\w+\.\w+$/,
-            message: "Email address is required"
+            required: "Email is required",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "Please enter a valid email address"
+            }
           }}
         />
 
@@ -68,7 +72,13 @@ const SignUpPage = () => {
           type="password"
           register={register}
           error={errors.password}
-          validation={{ required: "Password is required", minLength: 8 }}
+          validation={{
+            required: "Password is required",
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters"
+            }
+          }}
         />
 
         <button type="submit" className="yellow-btn w-full mt-5" disabled={isSubmitting}>
