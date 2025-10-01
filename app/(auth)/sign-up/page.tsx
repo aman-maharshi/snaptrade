@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import InputField from "@/components/forms/InputField"
 import SelectField from "@/components/forms/SelectField"
 import { INVESTMENT_GOALS, RISK_TOLERANCE_OPTIONS, PREFERRED_INDUSTRIES } from "@/lib/constants"
+import { CountrySelectField } from "@/components/forms/CountrySelectField"
 
 const SignUpPage = () => {
   const {
@@ -16,7 +17,11 @@ const SignUpPage = () => {
     defaultValues: {
       fullName: "",
       email: "",
-      password: ""
+      password: "",
+      country: "IN",
+      investmentGoals: "Growth",
+      riskTolerance: "Medium",
+      preferredIndustry: "Technology"
     },
     mode: "onBlur"
   })
@@ -79,6 +84,8 @@ const SignUpPage = () => {
             }
           }}
         />
+
+        <CountrySelectField name="country" label="Country" control={control} error={errors.country} required />
 
         <SelectField
           name="investmentGoals"
